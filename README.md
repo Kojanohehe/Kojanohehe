@@ -1,16 +1,629 @@
-## Hi there 👋
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>Absolut ingenting</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+background: #eae2cf;
+font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+color: #2c3e2b;
+padding: 16px 12px 60px;
+}
+.container {
+max-width: 1100px;
+margin: 0 auto;
+background: #fffef7;
+border-radius: 48px 48px 32px 32px;
+box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+overflow: hidden;
+border: 1px solid #cfc3a8;
+}
+header {
+background: #4a6a3b;
+padding: 20px 16px;
+text-align: center;
+color: #fbf5df;
+position: relative;
+}
+header h1 {
+font-size: 1.8rem;
+}
+.admin-toggle {
+position: absolute;
+top: 16px;
+right: 16px;
+background: #f4e2b0;
+border: none;
+border-radius: 60px;
+padding: 6px 16px;
+font-weight: bold;
+font-size: 0.8rem;
+color: #3b5a2b;
+cursor: pointer;
+}
+.admin-badge {
+background: #c99e3a;
+color: #2c2b1f;
+padding: 4px 12px;
+border-radius: 30px;
+font-size: 0.7rem;
+display: inline-block;
+margin-top: 6px;
+}
+nav {
+background: #e8e0cd;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 6px;
+padding: 10px 8px;
+border-bottom: 1px solid #cfc3a8;
+}
+nav button {
+background: #fff4e6;
+border: none;
+padding: 8px 18px;
+font-weight: 600;
+border-radius: 60px;
+color: #3b5a2b;
+cursor: pointer;
+font-size: 0.9rem;
+}
+nav button.active {
+background: #4a6a3b;
+color: white;
+}
+.tab-content {
+display: none;
+padding: 20px 18px 28px;
+animation: fade 0.2s;
+}
+.tab-content.active {
+display: block;
+}
+@keyframes fade {
+from { opacity: 0; transform: translateY(5px); }
+to { opacity: 1; transform: translateY(0); }
+}
+h2 {
+font-size: 1.5rem;
+border-left: 5px solid #7aa55a;
+padding-left: 14px;
+margin-bottom: 18px;
+}
+h3 {
+font-size: 1.2rem;
+margin: 20px 0 10px;
+color: #4f7343;
+}
+.card {
+background: #f9f6ec;
+border-radius: 28px;
+padding: 16px 20px;
+margin-bottom: 24px;
+border-left: 4px solid #8baa6e;
+}
+.alphabet-grid {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin: 20px 0;
+}
+.letter {
+background: #e2dcc8;
+padding: 8px 14px;
+border-radius: 40px;
+font-weight: bold;
+font-size: 1.2rem;
+}
+.word-list {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+gap: 8px;
+margin-bottom: 30px;
+}
+.word-item {
+background: #fefcf5;
+border-bottom: 1px solid #e4dcc8;
+padding: 6px 4px;
+display: flex;
+justify-content: space-between;
+}
+.word-sv {
+font-weight: 600;
+}
+.word-ko {
+font-family: monospace;
+background: #efe8d6;
+padding: 2px 8px;
+border-radius: 20px;
+}
+.form-group {
+margin-bottom: 16px;
+}
+input, textarea {
+width: 100%;
+padding: 12px 16px;
+border-radius: 40px;
+border: 1px solid #ccc5ae;
+background: white;
+font-size: 1rem;
+}
+button {
+background: #6f9e4f;
+border: none;
+border-radius: 40px;
+padding: 10px 20px;
+color: white;
+font-weight: bold;
+cursor: pointer;
+}
+.word-list-container {
+max-height: 300px;
+overflow-y: auto;
+margin-top: 16px;
+border-top: 1px solid #e0d6bc;
+}
+.word-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 8px 4px;
+border-bottom: 1px solid #ece3cf;
+}
+.delete-btn {
+background: #c77c4a;
+padding: 4px 12px;
+font-size: 0.7rem;
+border-radius: 30px;
+}
+.quiz-area {
+background: #f2efe2;
+border-radius: 32px;
+padding: 20px;
+text-align: center;
+}
+.quiz-question {
+font-size: 1.6rem;
+font-weight: 600;
+margin: 12px 0;
+}
+.quiz-input {
+width: 80%;
+margin: 10px auto;
+}
+.search-box {
+display: flex;
+gap: 8px;
+margin-bottom: 20px;
+flex-wrap: wrap;
+}
+.search-box input {
+flex: 3;
+}
+.search-box button {
+flex: 1;
+}
+.result {
+background: white;
+border-radius: 32px;
+padding: 16px;
+text-align: center;
+font-size: 1.2rem;
+}
+footer {
+text-align: center;
+font-size: 0.7rem;
+padding: 20px;
+color: #7e8f6e;
+border-top: 1px solid #e2d8c0;
+}
+@media (max-width: 550px) {
+.quiz-question { font-size: 1.3rem; }
+nav button { padding: 6px 12px; font-size: 0.8rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>🏕️ Absolut ingenting</h1>
+<p>byggspråket – lär dig och skapa egna ord</p>
+<button id="adminLoginBtn" class="admin-toggle">👑 Admin</button>
+<div id="adminStatus"></div>
+</header>
+<nav>
+<button data-tab="learn">📘 Lär dig</button>
+<button data-tab="words">📖 Ordlistor</button>
+<button data-tab="quiz">🎯 Quiz</button>
+<button data-tab="translate">🔍 Översätt</button>
+<button data-tab="adminPanel" id="adminTabBtn" style="display:none;">⚙️ Adminpanel</button>
+</nav>
 
-<!--
-**Kojanohehe/Kojanohehe** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<!-- Lär dig -->
+<div id="learn" class="tab-content">
+<h2>🔤 Alfabet (29 bokstäver)</h2>
+<div class="alphabet-grid">
+<span class="letter">A</span><span class="letter">AO</span><span class="letter">E</span>
+<span class="letter">EJ</span><span class="letter">I</span><span class="letter">O</span>
+<span class="letter">U</span><span class="letter">Y</span><span class="letter">AJ</span>
+<span class="letter">B</span><span class="letter">CH</span><span class="letter">D</span>
+<span class="letter">F</span><span class="letter">G</span><span class="letter">H</span>
+<span class="letter">J</span><span class="letter">K</span><span class="letter">L</span>
+<span class="letter">M</span><span class="letter">N</span><span class="letter">NG</span>
+<span class="letter">P</span><span class="letter">R</span><span class="letter">S</span>
+<span class="letter">SH</span><span class="letter">T</span><span class="letter">V</span>
+<span class="letter">W</span><span class="letter">Z</span>
+</div>
+<div class="card">
+<strong>9 grammatikregler</strong><br>
+1. Ordföljd: VEM – GÖR – VAD (<em>Mi konstru koj</em>)<br>
+2. Tid: -ar (nu), -de (då), -er (framtid)<br>
+3. Flera: +s (<em>pin → pins</em>)<br>
+4. Bestämd: +en/-et (<em>kojen, taktet</em>)<br>
+5. Adjektiv före substantiv (<em>grand koj</em>)<br>
+6. Fråga: börja med <em>We</em> (<em>We tu bygg?</em>)<br>
+7. Negation: <em>no</em> före verb (<em>Mi no bygg</em>)<br>
+8. Uppmaning: verb + -a! (<em>Bygga!</em>)<br>
+9. Ägande: min, din, lis, las, nosar, vosar, lesar
+</div>
+</div>
 
-Here are some ideas to get you started:
+<!-- Ordlistor -->
+<div id="words" class="tab-content">
+<h2>📚 Ordlistor</h2>
+<div id="wordlistsContainer"></div>
+</div>
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<!-- Quiz -->
+<div id="quiz" class="tab-content">
+<h2>🎯 Träna glosor</h2>
+<div class="quiz-area">
+<div class="quiz-question" id="quizWord">laddar...</div>
+<input type="text" id="quizAnswer" class="quiz-input" placeholder="Skriv på Kojano">
+<div><button id="checkQuizBtn">Kontrollera</button> <button id="newQuizBtn">🎲 Nytt ord</button></div>
+<div id="quizFeedback" class="feedback"></div>
+</div>
+</div>
+
+<!-- Översätt -->
+<div id="translate" class="tab-content">
+<h2>🔍 Sök ord (svenska ↔ kojano)</h2>
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="t.ex. koja eller koj">
+<button id="searchBtn">Översätt</button>
+</div>
+<div id="translateResult" class="result">⭐ Skriv ett ord</div>
+</div>
+
+<!-- Adminpanel -->
+<div id="adminPanel" class="tab-content">
+<h2>⚙️ Admin – lägg till egna ord</h2>
+<div class="card">
+<div class="form-group">
+<label>Svenska ord</label>
+<input type="text" id="newSvWord" placeholder="t.ex. dator">
+</div>
+<div class="form-group">
+<label>Kojano-översättning</label>
+<input type="text" id="newKoWord" placeholder="t.ex. komp">
+</div>
+<button id="addWordBtn">➕ Lägg till ord</button>
+<hr>
+<h3>🔐 Ändra admin-lösenord</h3>
+<div class="form-group">
+<label>Nytt lösenord</label>
+<input type="password" id="newAdminPwd" placeholder="Ange nytt lösenord">
+</div>
+<button id="changePwdBtn">Ändra lösenord</button>
+<hr>
+<h3>📋 Mina tillagda ord</h3>
+<div id="customWordList" class="word-list-container"></div>
+<button id="resetCustomWords" style="background:#b97f48; margin-top: 12px;">🗑️ Radera ALLA egna ord</button>
+</div>
+<p style="font-size:0.8rem; margin-top:12px;">✏️ Grundord kan inte tas bort, men du kan lägga till hur många egna som helst.</p>
+</div>
+<footer>🏕️ Kojano – adminläge sparas i din mobil</footer>
+</div>
+
+<script>
+// ---------- GRUNDORDBOK (alla kategorier) ----------
+const baseDict = new Map();
+function addBase(sv, ko) { baseDict.set(sv.toLowerCase(), ko); baseDict.set(ko.toLowerCase(), sv); }
+
+// MAT
+addBase("vatten","aku"); addBase("mjölk","lakt"); addBase("juice","saft"); addBase("bröd","pan");
+addBase("smör","butir"); addBase("ost","kaz"); addBase("ägg","ägg"); addBase("kött","köt");
+addBase("fisk","fisk"); addBase("grönsaker","grön-sak"); addBase("frukt","söt-sak"); addBase("äpple","epl");
+addBase("banan","banan"); addBase("glass","glac"); addBase("kaka","tort"); addBase("godis","söt");
+
+// DJUR
+addBase("hund","kan"); addBase("katt","kat"); addBase("kanin","hopp"); addBase("hamster","hamstr");
+addBase("fågel","bird"); addBase("häst","ekv"); addBase("ko","bov"); addBase("gris","pork");
+addBase("ekorre","skvir"); addBase("räv","vulp"); addBase("uggla","strig");
+
+// DAGAR & TID
+addBase("måndag","lun-di"); addBase("tisdag","mar-di"); addBase("onsdag","merk-di");
+addBase("torsdag","jov-di"); addBase("fredag","ven-di"); addBase("lördag","sat-di");
+addBase("söndag","sol-di"); addBase("idag","hodie"); addBase("igår","heri"); addBase("imorgon","kras");
+addBase("vecka","sept"); addBase("månad","lun"); addBase("år","an");
+
+// SIFFROR
+addBase("noll","nul"); addBase("ett","un"); addBase("två","du"); addBase("tre","tri"); addBase("fyra","kvar");
+addBase("fem","kvin"); addBase("sex","ses"); addBase("sju","sep"); addBase("åtta","okt"); addBase("nio","nov");
+addBase("tio","dek"); addBase("tjugo","du-dek"); addBase("trettio","tri-dek"); addBase("fyrtio","kvar-dek");
+addBase("femtio","kvin-dek"); addBase("sextio","ses-dek"); addBase("sjuttio","sep-dek");
+addBase("åttio","okt-dek"); addBase("nittio","nov-dek"); addBase("hundra","cent"); addBase("tusen","mil");
+
+// FÄRGER
+addBase("röd","red"); addBase("blå","blå"); addBase("grön","verd"); addBase("gul","gelb");
+addBase("svart","svart"); addBase("vit","vit"); addBase("orange","oran"); addBase("rosa","ros");
+addBase("lila","lila"); addBase("brun","brun"); addBase("grå","grå");
+
+// KÄNSLOR
+addBase("glad","felic"); addBase("ledsen","tris"); addBase("arg","arg"); addBase("rädd","tim");
+addBase("lugn","kalm"); addBase("kär","amor"); addBase("trött","fatig"); addBase("pigg","energ");
+addBase("förvånad","surp"); addBase("orolig","anx"); addBase("ensam","sol"); addBase("modig","kuraĝ");
+
+// KROPPEN
+addBase("huvud","kap"); addBase("hår","har"); addBase("öga","ok"); addBase("öra","or"); addBase("näsa","naz");
+addBase("mun","munt"); addBase("tand","dent"); addBase("arm","arm"); addBase("hand","man"); addBase("finger","fing");
+addBase("ben","gamb"); addBase("fot","ped"); addBase("hjärta","kord"); addBase("mage","venter"); addBase("rygg","dors");
+
+// HEMMET
+addBase("hus","hus"); addBase("lägenhet","flat"); addBase("rum","rum"); addBase("kök","kök");
+addBase("sovrum","dorm-rum"); addBase("badrum","toa-rum"); addBase("vardagsrum","stor-rum");
+addBase("dörr","dor"); addBase("fönster","fen"); addBase("vägg","val"); addBase("golv","grund");
+addBase("tak","takt"); addBase("säng","säng"); addBase("bord","bord"); addBase("stol","sit");
+addBase("lampa","lamp"); addBase("nyckel","klav");
+
+// ---------- ADMIN-LÖSENORD (localStorage) ----------
+let ADMIN_PASSWORD = "koja123";
+function loadAdminPassword() {
+const stored = localStorage.getItem("absolut_ingenting_admin_pwd");
+if(stored) ADMIN_PASSWORD = stored;
+else {
+// Spara standardlösenordet första gången
+localStorage.setItem("absolut_ingenting_admin_pwd", ADMIN_PASSWORD);
+}
+}
+function setAdminPassword(newPwd) {
+ADMIN_PASSWORD = newPwd;
+localStorage.setItem("absolut_ingenting_admin_pwd", newPwd);
+}
+
+// ---------- ADMIN-ORD (lokal lagring) ----------
+let customWords = [];
+function loadCustomWords() {
+const stored = localStorage.getItem("absolut_ingenting_custom");
+if(stored) customWords = JSON.parse(stored);
+else customWords = [];
+}
+function saveCustomWords() {
+localStorage.setItem("absolut_ingenting_custom", JSON.stringify(customWords));
+refreshAdminWordList();
+rebuildFullDict();
+buildAllWordLists();
+}
+let fullDict = new Map();
+function rebuildFullDict() {
+fullDict.clear();
+for(let [k,v] of baseDict.entries()) fullDict.set(k,v);
+for(let w of customWords) {
+fullDict.set(w.sv.toLowerCase(), w.ko);
+fullDict.set(w.ko.toLowerCase(), w.sv);
+}
+}
+function refreshAdminWordList() {
+const container = document.getElementById("customWordList");
+if(!container) return;
+container.innerHTML = "";
+if(customWords.length === 0) {
+container.innerHTML = "<p style='padding:8px;'>Inga egna ord än. Lägg till!</p>";
+return;
+}
+customWords.forEach((item, idx) => {
+const div = document.createElement("div");
+div.className = "word-row";
+div.innerHTML = `
+<div class="word-pair"><span>${item.sv}</span> → <span>${item.ko}</span></div>
+<button class="delete-btn" data-index="${idx}">🗑️</button>
+`;
+container.appendChild(div);
+});
+document.querySelectorAll(".delete-btn").forEach(btn => {
+btn.addEventListener("click", (e) => {
+const index = parseInt(btn.getAttribute("data-index"));
+customWords.splice(index,1);
+saveCustomWords();
+});
+});
+}
+function addCustomWord(sv, ko) {
+sv = sv.trim().toLowerCase();
+ko = ko.trim().toLowerCase();
+if(!sv || !ko) return false;
+if(customWords.some(w => w.sv === sv)) return false;
+if(baseDict.has(sv) && !confirm("Detta svenska ord finns redan i grundordboken. Vill du ändå lägga till en egen variant?")) return false;
+customWords.push({sv, ko});
+saveCustomWords();
+return true;
+}
+function resetCustomWords() {
+if(confirm("Radera ALLA dina egna ord? (grundorden finns kvar)")) {
+customWords = [];
+saveCustomWords();
+}
+}
+
+// ---------- ADMIN INLOGG ----------
+let isAdmin = false;
+function setAdminMode(admin) {
+isAdmin = admin;
+const adminTab = document.getElementById("adminTabBtn");
+const statusDiv = document.getElementById("adminStatus");
+if(isAdmin) {
+adminTab.style.display = "inline-block";
+statusDiv.innerHTML = '<div class="admin-badge">🔓 ADMINLÄGE AKTIVERAT</div>';
+} else {
+adminTab.style.display = "none";
+statusDiv.innerHTML = '';
+if(document.getElementById("adminPanel").classList.contains("active")) switchTab("learn");
+}
+}
+function promptAdminLogin() {
+const pwd = prompt("Ange admin-lösenord:");
+if(pwd === ADMIN_PASSWORD) setAdminMode(true);
+else alert("Fel lösenord");
+}
+
+// ---------- ÄNDRA LÖSENORD ----------
+function changeAdminPassword() {
+if (!isAdmin) {
+alert("Du måste vara inloggad som admin för att ändra lösenord.");
+return;
+}
+const newPwd = document.getElementById("newAdminPwd").value.trim();
+if (!newPwd) {
+alert("Skriv in ett nytt lösenord.");
+return;
+}
+setAdminPassword(newPwd);
+alert("Lösenordet har ändrats! Du måste logga in igen med det nya lösenordet.");
+setAdminMode(false); // logga ut automatiskt
+document.getElementById("newAdminPwd").value = "";
+}
+
+// ---------- QUIZ ----------
+let currentQuizSv = "", currentQuizKo = "";
+function getRandomWordForQuiz() {
+let svWords = [];
+for(let [key,val] of fullDict.entries()) {
+if(key.length > 1 && !key.includes(' ') && !fullDict.has(val)) svWords.push(key);
+}
+if(svWords.length === 0) svWords = ["koja","bygga","pinne"];
+const random = svWords[Math.floor(Math.random()*svWords.length)];
+currentQuizSv = random;
+currentQuizKo = fullDict.get(random);
+document.getElementById("quizWord").innerText = currentQuizSv;
+}
+function checkQuiz() {
+const answer = document.getElementById("quizAnswer").value.trim().toLowerCase();
+const fb = document.getElementById("quizFeedback");
+if(!answer) { fb.innerHTML = "❓ Skriv ditt svar!"; return; }
+if(answer === currentQuizKo) fb.innerHTML = "✅ Rätt! 🏕️";
+else fb.innerHTML = `❌ Fel! Rätt svar är "${currentQuizKo}".`;
+}
+
+// ---------- ÖVERSÄTT ----------
+function translateWord() {
+const input = document.getElementById("searchInput").value.trim().toLowerCase();
+const res = document.getElementById("translateResult");
+if(!input) { res.innerHTML = "⭐ Skriv ett ord"; return; }
+if(fullDict.has(input)) res.innerHTML = `<strong>${input}</strong> → <strong style="background:#e9e2cd; padding:2px 12px; border-radius:40px;">${fullDict.get(input)}</strong>`;
+else res.innerHTML = `❓ "${input}" finns inte i ordboken. Prova ett annat ord.`;
+}
+
+// ---------- BYGG ORDLISTOR ----------
+const categories = {
+mat: ["vatten","mjölk","juice","bröd","smör","ost","ägg","kött","fisk","grönsaker","frukt","äpple","banan","glass","kaka","godis"],
+djur: ["hund","katt","kanin","hamster","fågel","häst","ko","gris","ekorre","räv","uggla"],
+tid: ["måndag","tisdag","onsdag","torsdag","fredag","lördag","söndag","idag","igår","imorgon","vecka","månad","år"],
+siffror: ["noll","ett","två","tre","fyra","fem","sex","sju","åtta","nio","tio","tjugo","trettio","fyrtio","femtio","sextio","sjuttio","åttio","nittio","hundra","tusen"],
+färger: ["röd","blå","grön","gul","svart","vit","orange","rosa","lila","brun","grå"],
+känslor: ["glad","ledsen","arg","rädd","lugn","kär","trött","pigg","förvånad","orolig","ensam","modig"],
+kropp: ["huvud","hår","öga","öra","näsa","mun","tand","arm","hand","finger","ben","fot","hjärta","mage","rygg"],
+hem: ["hus","lägenhet","rum","kök","sovrum","badrum","vardagsrum","dörr","fönster","vägg","golv","tak","säng","bord","stol","lampa","nyckel"]
+};
+function buildAllWordLists() {
+const container = document.getElementById("wordlistsContainer");
+if(!container) return;
+container.innerHTML = "";
+for(let [catName, svWords] of Object.entries(categories)) {
+const catDiv = document.createElement("div");
+catDiv.style.marginBottom = "30px";
+const title = document.createElement("h3");
+const icons = { mat:"🍎", djur:"🐾", tid:"📅", siffror:"🔢", färger:"🎨", känslor:"😊", kropp:"🦵", hem:"🏠" };
+title.innerText = `${icons[catName] || "📖"} ${catName.charAt(0).toUpperCase() + catName.slice(1)}`;
+catDiv.appendChild(title);
+const wordGrid = document.createElement("div");
+wordGrid.className = "word-list";
+for(let sv of svWords) {
+const ko = fullDict.get(sv.toLowerCase());
+if(ko) {
+const item = document.createElement("div");
+item.className = "word-item";
+item.innerHTML = `<span class="word-sv">${sv}</span> <span class="word-ko">${ko}</span>`;
+wordGrid.appendChild(item);
+}
+}
+catDiv.appendChild(wordGrid);
+container.appendChild(catDiv);
+}
+if(customWords.length > 0) {
+const customCat = document.createElement("div");
+customCat.style.marginBottom = "30px";
+const title = document.createElement("h3");
+title.innerText = "✨ Mina egna ord";
+customCat.appendChild(title);
+const wordGrid = document.createElement("div");
+wordGrid.className = "word-list";
+for(let w of customWords) {
+const item = document.createElement("div");
+item.className = "word-item";
+item.innerHTML = `<span class="word-sv">${w.sv}</span> <span class="word-ko">${w.ko}</span>`;
+wordGrid.appendChild(item);
+}
+customCat.appendChild(wordGrid);
+container.appendChild(customCat);
+}
+}
+
+// ---------- FLIKHANTERING ----------
+function switchTab(tabId) {
+document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+document.getElementById(tabId).classList.add('active');
+document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+const activeBtn = document.querySelector(`nav button[data-tab="${tabId}"]`);
+if(activeBtn) activeBtn.classList.add('active');
+if(tabId === "adminPanel" && !isAdmin) { alert("Du måste vara admin för att se adminpanelen."); switchTab("learn"); }
+if(tabId === "quiz") getRandomWordForQuiz();
+if(tabId === "words") buildAllWordLists();
+}
+
+// ---------- INIT ----------
+loadAdminPassword();
+loadCustomWords();
+rebuildFullDict();
+refreshAdminWordList();
+setAdminMode(false);
+buildAllWordLists();
+
+// Event listeners
+document.getElementById("adminLoginBtn").addEventListener("click", () => { if(isAdmin) setAdminMode(false); else promptAdminLogin(); });
+document.getElementById("addWordBtn").addEventListener("click", () => {
+const sv = document.getElementById("newSvWord").value;
+const ko = document.getElementById("newKoWord").value;
+if(addCustomWord(sv, ko)) { document.getElementById("newSvWord").value = ""; document.getElementById("newKoWord").value = ""; alert("Ord tillagt!"); buildAllWordLists(); }
+else alert("Kunde inte lägga till (tomt eller redan finns)");
+});
+document.getElementById("resetCustomWords").addEventListener("click", resetCustomWords);
+document.getElementById("searchBtn").addEventListener("click", translateWord);
+document.getElementById("checkQuizBtn").addEventListener("click", checkQuiz);
+document.getElementById("newQuizBtn").addEventListener("click", () => { getRandomWordForQuiz(); document.getElementById("quizAnswer").value = ""; document.getElementById("quizFeedback").innerHTML = ""; });
+document.getElementById("changePwdBtn").addEventListener("click", changeAdminPassword);
+document.querySelectorAll("nav button[data-tab]").forEach(btn => btn.addEventListener("click", () => switchTab(btn.getAttribute("data-tab"))));
+document.getElementById("searchInput").addEventListener("keypress", (e) => { if(e.key==='Enter') translateWord(); });
+document.getElementById("quizAnswer").addEventListener("keypress", (e) => { if(e.key==='Enter') checkQuiz(); });
+switchTab("learn");
+</script>
+</body>
+</html>
+
